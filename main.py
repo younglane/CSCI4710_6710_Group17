@@ -8,11 +8,13 @@ from sqlalchemy import create_engine
 from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey
 from sqlalchemy import inspect
 
+
 #-*- mode: python -*-
 #-*- coding: utf-8 -*-
 
 # get current app directory
 basedir = os.path.abspath(os.path.dirname(__file__))
+
 
 app = Flask(__name__)
 
@@ -29,17 +31,17 @@ class Survey(db.Model):
     __tablename__ = 'data-survey'
     index = db.Column( 'id_num',db.Integer,  primary_key=True)
     country = db.Column(db.String(100))
-    age = db.Column(db.String(50))  
-    gender = db.Column(db.String(200))
-    fearFactor = db.Column(db.String(10))
-    anxiousFactor = db.Column(db.String(10))
-    angerFactor = db.Column(db.String(10))
-    happyFactor = db.Column(db.String(10))
-    sadFactor = db.Column(db.String(10))
-    emotionFactor = db.Column(db.String(10))
-    whyFactor = db.Column(db.String(10))
-    meaningFactor = db.Column(db.String(10))
-    job = db.Column(db.String(50))
+    age = db.Column(db.Integer)  
+    gender = db.Column(db.String(10))
+    fearFactor = db.Column(db.Integer)
+    anxiousFactor = db.Column(db.Integer)
+    angerFactor = db.Column(db.Integer)
+    happyFactor = db.Column(db.Integer)
+    sadFactor = db.Column(db.Integer)
+    emotionFactor = db.Column(db.Text())
+    whyFactor = db.Column(db.Text())
+    meaningFactor = db.Column(db.Text())
+    job = db.Column(db.Text())
     
     def __init__(self, index, country, age, gender, fearFactor, anxiousFactor, angerFactor, happyFactor, sadFactor, emotionFactor, whyFactor, meaningFactor, job):
         self.id_num = index
@@ -64,7 +66,7 @@ class Survey(db.Model):
 
 
 
-    
+db.drop_all()    
 db.create_all()
 with open('t.csv', 'r') as csvfile:
     reader = csv.reader(csvfile)
@@ -72,23 +74,16 @@ with open('t.csv', 'r') as csvfile:
     #print(df)
     for line in reader:
         #print(line[0])
-        response = Survey(line[0], line[1], line[2], line[3], line[4], line[5], line[6], line[7], line[8], line[9], line[10], line[11], line[12])
+        response = Survey(line[0], line[1], line[2], line[3], line[4], line[5], line[6], line[7], line[8], line[9].decode('utf-8'), line[10].decode('utf-8'), line[11].decode('utf-8'), line[12].decode('utf-8'))
         db.session.add(response)
         db.session.commit()
 
 try:
-    for i in df:
-        '''
-        s = Survey(country = "usa",age='t',gender='t',fearFactor='t',anxiousFactor='t',angerFactor='t',happyFactor='t',sadFactor='t',emotionFactor='t',whyFactor='t',meaningFactor = 't',job = 't')
-        db.session.add(s)
-        db.session.commit()
-        '''
-        #print(i[1])
+    for row in Survey.query.all():
+        print(row.index,row.country,row.age,row.gender,row.fearFactor,row.anxiousFactor,row.angerFactor,row.happyFactor,row.sadFactor,row.emotionFactor,row.whyFactor,row.meaningFactor,row.job)
 except:
     print("error")
 
-s1 = Survey.query.filter(Survey.country == 'usa').first()
-print(s1.country)
     
 
 
