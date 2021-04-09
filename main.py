@@ -3,11 +3,13 @@ import util
 from flask_sqlalchemy import SQLAlchemy
 import os
 import csv
+import numpy as np
 import pandas as pd
 from sqlalchemy import create_engine
 from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey
 from sqlalchemy import inspect
-from sqlalchemy import and_
+from sqlalchemy.orm import deferred
+from sqlalchemy.orm import defer, undefer
 
 
 #-*- mode: python -*-
@@ -30,10 +32,10 @@ db = SQLAlchemy(app)
 
 class Survey(db.Model):
     __tablename__ = 'data-survey'
-    index = db.Column( 'id_num',db.Integer,  primary_key=True)
-    country = db.Column(db.String(100))
+    index = db.Column(db.Integer,  primary_key=True)
+    country =db.Column(db.Text())
     age = db.Column(db.Integer)  
-    gender = db.Column(db.String(10))
+    gender = db.Column(db.Text())
     fearFactor = db.Column(db.Integer)
     anxiousFactor = db.Column(db.Integer)
     angerFactor = db.Column(db.Integer)
@@ -45,7 +47,7 @@ class Survey(db.Model):
     job = db.Column(db.Text())
     
     def __init__(self, index, country, age, gender, fearFactor, anxiousFactor, angerFactor, happyFactor, sadFactor, emotionFactor, whyFactor, meaningFactor, job):
-        self.id_num = index
+        self.index = index
         self.country = country
         self.age = age
         self.gender = gender
@@ -59,11 +61,11 @@ class Survey(db.Model):
         self.meaningFactor = meaningFactor
         self.job = job
         
-    #def __getitem__(self):
-        #return self.id_num,self.country, self.age,self.gender,self.fearFactor,self.anxiousFactor,self.angerFactor,self.happyFactor,self.sadFactor,self.emotionFactor,self.whyFactor,self.meaningFactor, self.job
+    def __getitem__(self, this):
+        return self.index,self.country, self.age,self.gender,self.fearFactor,self.anxiousFactor,self.angerFactor,self.happyFactor,self.sadFactor,self.emotionFactor,self.whyFactor,self.meaningFactor, self.job
         
     def __repr__(self):
-        return "%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s" % (self.id_num,self.country, self.age,self.gender,self.fearFactor,self.anxiousFactor,self.angerFactor,self.happyFactor,self.sadFactor,self.emotionFactor,self.whyFactor,self.meaningFactor, self.job)
+        return "%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s" % (self.index,self.country, self.age,self.gender,self.fearFactor,self.anxiousFactor,self.angerFactor,self.happyFactor,self.sadFactor,self.emotionFactor,self.whyFactor,self.meaningFactor, self.job)
 
     def __iter__(self):
         return iter([self.index,self.country, self.age,self.gender,self.fearFactor,self.anxiousFactor,self.angerFactor,self.happyFactor,self.sadFactor,self.emotionFactor,self.whyFactor,self.meaningFactor, self.job])
@@ -159,17 +161,15 @@ query4_6 = db.session.query(Survey).filter(Survey.country == "Australia",Survey.
 query4_7 = db.session.query(Survey).filter(Survey.country == "Portugal",Survey.gender == "Female",Survey.age > 35).all()
 query4_8 = db.session.query(Survey).filter(Survey.country == "Germany",Survey.gender == "Female",Survey.age > 35).all()
 
-#except:
-    #print("error")
+
+
 
 @app.route('/')
 def index():
-    #labels = util.cluster_user_data(Survey.query.all())
     return render_template('index.html', column_html=column_names, data_html= query0)
 
 @app.route("/group1")
 def group1():
- 
     return render_template("group1.html",column_html=column_names, data_html= query1, data1_html= query1_1, data2_html= query1_2, data3_html= query1_3, data4_html= query1_4, data5_html= query1_5, data6_html= query1_6,data7_html= query1_7,data8_html= query1_8,data9_html= query1_9 )
 
 @app.route("/group2")

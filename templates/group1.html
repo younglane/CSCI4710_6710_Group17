@@ -259,6 +259,29 @@
 		   {% endfor %}
 		</tbody>
 	  </table>
+       <h1>Split Data for USA</h1>
+    
+	<!-- <p>{{column_names}}</p>
+	<p>{{data_part}}</p> -->
+
+	<table class="table">
+		<thead>
+		  <tr>
+			{% for item in column_html %}
+				<th>{{item}}</th>
+			{% endfor %}
+		  </tr>
+		</thead>
+		<tbody>
+		  {% for row in data10_html %}
+			   <tr>
+				{% for data in row %}
+					<td>{{ data }}</td>
+				{% endfor %}
+			   </tr>
+		   {% endfor %}
+		</tbody>
+	  </table>
 
 
 </body>
