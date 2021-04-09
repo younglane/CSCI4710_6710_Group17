@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Upload a CSV File</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">COVID-19 Survey</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="{{url_for('index')}}">All Results</a></li>
+      <li><a href="{{url_for('group1')}}">Query1</a></li>
+      <li><a href="{{url_for('group2')}}">Query2</a></li>
+      <li class = "active"><a href="{{url_for('group3')}}">Query3</a></li>
+      <li><a href="{{url_for('group4')}}">Query4</a></li>
+    </ul>
+  </div>
+</nav>
+	<h1>Females less than 36</h1>
+	<!-- <p>{{column_names}}</p>
+	<p>{{data_part}}</p> -->
+
+	<table class="table">
+		<thead>
+		  <tr>
+			{% for item in column_html %}
+				<th>{{item}}</th>
+			{% endfor %}
+		  </tr>
+		</thead>
+		<tbody>
+		  {% for row in data_html %}
+			   <tr>
+				{% for data in row %}
+					<td>{{ data }}</td>
+				{% endfor %}
+			   </tr>
+		   {% endfor %}
+		</tbody>
+	  </table>
+     <h1>Females less than age 36 and live in the USA</h1>
+    
+	<!-- <p>{{column_names}}</p>
+	<p>{{data_part}}</p> -->
+
+	<table class="table">
+		<thead>
+		  <tr>
+			{% for item in column_html %}
+				<th>{{item}}</th>
+			{% endfor %}
+		  </tr>
+		</thead>
+		<tbody>
+		  {% for row in data1_html %}
+			   <tr>
+				{% for data in row %}
+					<td>{{ data }}</td>
+				{% endfor %}
+			   </tr>
+		   {% endfor %}
+		</tbody>
+	  </table>
+      <h1>Females less than age 36 and live in Romania</h1>
+    
+	<!-- <p>{{column_names}}</p>
+	<p>{{data_part}}</p> -->
+
+	<table class="table">
+		<thead>
+		  <tr>
+			{% for item in column_html %}
+				<th>{{item}}</th>
+			{% endfor %}
+		  </tr>
+		</thead>
+		<tbody>
+		  {% for row in data2_html %}
+			   <tr>
+				{% for data in row %}
+					<td>{{ data }}</td>
+				{% endfor %}
+			   </tr>
+		   {% endfor %}
+		</tbody>
+	  </table>
+      <h1>Females less than age 36 and live in the UK</h1>
+    
+	<!-- <p>{{column_names}}</p>
+	<p>{{data_part}}</p> -->
+
+	<table class="table">
+		<thead>
+		  <tr>
+			{% for item in column_html %}
+				<th>{{item}}</th>
+			{% endfor %}
+		  </tr>
+		</thead>
+		<tbody>
+		  {% for row in data3_html %}
+			   <tr>
+				{% for data in row %}
+					<td>{{ data }}</td>
+				{% endfor %}
+			   </tr>
+		   {% endfor %}
+		</tbody>
+	  </table>
+      <h1>Females less than age 36 and live in Canada</h1>
+    
+	<!-- <p>{{column_names}}</p>
+	<p>{{data_part}}</p> -->
+
+	<table class="table">
+		<thead>
+		  <tr>
+			{% for item in column_html %}
+				<th>{{item}}</th>
+			{% endfor %}
+		  </tr>
+		</thead>
+		<tbody>
+		  {% for row in data4_html %}
+			   <tr>
+				{% for data in row %}
+					<td>{{ data }}</td>
+				{% endfor %}
+			   </tr>
+		   {% endfor %}
+		</tbody>
+	  </table>
+      <h1>Females less than age 36 and live in Switzerland</h1>
+    
+	<!-- <p>{{column_names}}</p>
+	<p>{{data_part}}</p> -->
+
+	<table class="table">
+		<thead>
+		  <tr>
+			{% for item in column_html %}
+				<th>{{item}}</th>
+			{% endfor %}
+		  </tr>
+		</thead>
+		<tbody>
+		  {% for row in data5_html %}
+			   <tr>
+				{% for data in row %}
+					<td>{{ data }}</td>
+				{% endfor %}
+			   </tr>
+		   {% endfor %}
+		</tbody>
+	  </table>
+      <h1>Females less than age 36 and live in  Rwanda</h1>
+    
+	<!-- <p>{{column_names}}</p>
+	<p>{{data_part}}</p> -->
+
+	<table class="table">
+		<thead>
+		  <tr>
+			{% for item in column_html %}
+				<th>{{item}}</th>
+			{% endfor %}
+		  </tr>
+		</thead>
+		<tbody>
+		  {% for row in data6_html %}
+			   <tr>
+				{% for data in row %}
+					<td>{{ data }}</td>
+				{% endfor %}
+			   </tr>
+		   {% endfor %}
+		</tbody>
+	  </table>
+      <h1>Females less than age 36 and live in China</h1>
+    
+	<!-- <p>{{column_names}}</p>
+	<p>{{data_part}}</p> -->
+
+	<table class="table">
+		<thead>
+		  <tr>
+			{% for item in column_html %}
+				<th>{{item}}</th>
+			{% endfor %}
+		  </tr>
+		</thead>
+		<tbody>
+		  {% for row in data7_html %}
+			   <tr>
+				{% for data in row %}
+					<td>{{ data }}</td>
+				{% endfor %}
+			   </tr>
+		   {% endfor %}
+		</tbody>
+	  </table>
+      <h1>Females less than age 36 and live in Germany</h1>
+    
+	<!-- <p>{{column_names}}</p>
+	<p>{{data_part}}</p> -->
+
+	<table class="table">
+		<thead>
+		  <tr>
+			{% for item in column_html %}
+				<th>{{item}}</th>
+			{% endfor %}
+		  </tr>
+		</thead>
+		<tbody>
+		  {% for row in data8_html %}
+			   <tr>
+				{% for data in row %}
+					<td>{{ data }}</td>
+				{% endfor %}
+			   </tr>
+		   {% endfor %}
+		</tbody>
+	  </table>
+      <h1>Females less than age 36 and live in Australia</h1>
+    
+	<!-- <p>{{column_names}}</p>
+	<p>{{data_part}}</p> -->
+
+	<table class="table">
+		<thead>
+		  <tr>
+			{% for item in column_html %}
+				<th>{{item}}</th>
+			{% endfor %}
+		  </tr>
+		</thead>
+		<tbody>
+		  {% for row in data9_html %}
+			   <tr>
+				{% for data in row %}
+					<td>{{ data }}</td>
+				{% endfor %}
+			   </tr>
+		   {% endfor %}
+		</tbody>
+	  </table>
+          <h1>Females less than age 36 and live in Portugal</h1>
+    
+	<!-- <p>{{column_names}}</p>
+	<p>{{data_part}}</p> -->
+
+	<table class="table">
+		<thead>
+		  <tr>
+			{% for item in column_html %}
+				<th>{{item}}</th>
+			{% endfor %}
+		  </tr>
+		</thead>
+		<tbody>
+		  {% for row in data10_html %}
+			   <tr>
+				{% for data in row %}
+					<td>{{ data }}</td>
+				{% endfor %}
+			   </tr>
+		   {% endfor %}
+		</tbody>
+	  </table>
+          <h1>Females less than age 36 and live in Columbia</h1>
+    
+	<!-- <p>{{column_names}}</p>
+	<p>{{data_part}}</p> -->
+
+	<table class="table">
+		<thead>
+		  <tr>
+			{% for item in column_html %}
+				<th>{{item}}</th>
+			{% endfor %}
+		  </tr>
+		</thead>
+		<tbody>
+		  {% for row in data11_html %}
+			   <tr>
+				{% for data in row %}
+					<td>{{ data }}</td>
+				{% endfor %}
+			   </tr>
+		   {% endfor %}
+		</tbody>
+	  </table>
+            <h1>Females less than age 36 and live in Cyprus</h1>
+    
+	<!-- <p>{{column_names}}</p>
+	<p>{{data_part}}</p> -->
+
+	<table class="table">
+		<thead>
+		  <tr>
+			{% for item in column_html %}
+				<th>{{item}}</th>
+			{% endfor %}
+		  </tr>
+		</thead>
+		<tbody>
+		  {% for row in data12_html %}
+			   <tr>
+				{% for data in row %}
+					<td>{{ data }}</td>
+				{% endfor %}
+			   </tr>
+		   {% endfor %}
+		</tbody>
+	  </table>
+
+
+
+</body>
+</html>

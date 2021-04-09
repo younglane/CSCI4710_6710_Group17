@@ -11,9 +11,24 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 
-
 <body>
-	<h1>Show user data from backend</h1>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">COVID-19 Survey</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="{{url_for('index')}}">All Results</a></li>
+      <li><a href="{{url_for('group1')}}">Query1</a></li>
+      <li><a href="{{url_for('group2')}}">Query2</a></li>
+      <li><a href="{{url_for('group3')}}">Query3</a></li>
+      <li><a href="{{url_for('group4')}}">Query4</a></li>
+    </ul>
+     
+
+  </div>
+</nav>
+	<h1>All results from Database</h1>
 	<!-- <p>{{column_names}}</p>
 	<p>{{data_part}}</p> -->
 
